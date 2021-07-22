@@ -1,22 +1,27 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
 import json
 
-with open('station.json', encoding='utf-8') as file:
-    datas = json.load(file)
+def make_node():
+    with open('vertices.json', encoding='utf-8') as vertices_json:
+        vertices_info = json.load(vertices_json)
 
-    print(datas['가능'])
+    for i in range(len(vertices_info['station'])):
+        station_nm = vertices_info['station'][i]['station_nm']      # 역 이름
+        line_num = vertices_info['station'][i]['line_num']          # 호선
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+        if station_nm in line_info:      # 이미 해당 역에 대한 정보가 있으면, 새로운 '호선' append
+            line_info[station_nm].append(line_num)
+        else:                       # 새로운 '역'이면, 리스트로 '호선' 추가
+            line_info[station_nm] = [line_num]
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    # station.json 파일 입력
+    with open('station.json', encoding='utf-8') as station_json:
+        station_info = json.load(station_json)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        print(station_info['가능'])
+
+    # vertices.json 파일 입력 및 딕셔너리 line 생성
+    line_info = {}  # 딕셔너리 생성 : 호선 정보
+    make_node()
+
+    print(line_info)
