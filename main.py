@@ -21,7 +21,7 @@ def input_data():                                                           # **
     while True:
         line = f.readline()     # 파일 내용 한 줄씩 읽어옴
         if not line: break
-
+        line = line.replace('\n', '')
         user_name = line.split(' ')[0]          # 띄어쓰기로 구분하여 앞에는 유저 이름
         boarding_station = line.split(' ')[1]   # 뒤에는 탑승 역
 
