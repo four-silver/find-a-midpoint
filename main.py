@@ -13,10 +13,11 @@ def make_node():
         else:                       # 새로운 '역'이면, 리스트로 '호선' 추가
             line_info[station_nm] = [line_num]
 
-def input_data():
+def input_data():                                                           # ***************** 역이름에 '\n'까지 포함됨! 수정 필요!!!
+                                                                            # ex. {'다은': '캠퍼스타운\n', '시은': '쌍문\n', '은서': '금정\n', '가은': '수원'}
     # input_file 텍스트 파일 입력
     f = open("input_file.txt", encoding='utf-8')
-    user = {}                   # user 정보 저장할 딕셔너리
+
     while True:
         line = f.readline()     # 파일 내용 한 줄씩 읽어옴
         if not line: break
@@ -24,8 +25,8 @@ def input_data():
         user_name = line.split(' ')[0]          # 띄어쓰기로 구분하여 앞에는 유저 이름
         boarding_station = line.split(' ')[1]   # 뒤에는 탑승 역
 
-        user[user_name] = boarding_station      # 딕셔너리에 집어넣음 { 이름 : 탑승역 }
-        print(user_name + " : " + user[user_name])
+        user_info[user_name] = boarding_station      # 딕셔너리에 집어넣음 { 이름 : 탑승역 }
+        print(user_name + " : " + user_info[user_name])
     f.close()
 
 if __name__ == '__main__':
@@ -38,6 +39,10 @@ if __name__ == '__main__':
     # vertices.json 파일 입력 및 딕셔너리 line 생성
     line_info = {}  # 딕셔너리 생성 : 호선 정보
     make_node()
+
+    # user 정보 저장
+    user_info = {}                    # user 정보 저장할 딕셔너리
     input_data()
 
+    print(user_info)
     #print(line_info)
