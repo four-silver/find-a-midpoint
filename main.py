@@ -14,3 +14,6 @@ if __name__ == '__main__':
     print(station_info)
     print(line_info)
     print(user_info)
+
+    distance = dijkstra.dijkstra('금정', station_info, line_info)
+    print(distance)
