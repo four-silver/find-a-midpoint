@@ -1,0 +1,2 @@
+def dikstra():
+    print()
