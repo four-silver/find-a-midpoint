@@ -1,6 +1,6 @@
 import json
 import preprocessing
-import dijkstra
+import middle_station
 
 if __name__ == '__main__':
     # 'vertices.json & station.json' 파일 입력 및 딕셔너리 line 생성
@@ -11,9 +11,4 @@ if __name__ == '__main__':
     user_info = {}                    # user 정보 저장할 딕셔너리
     preprocessing.input_data(user_info)
 
-    print(station_info)
-    print(line_info)
-    print(user_info)
-
-    distance = dijkstra.dijkstra('금정', station_info, line_info)
-    print(distance)
+    middle_station.middle_station(station_info, line_info, user_info)
