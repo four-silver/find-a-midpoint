@@ -4,6 +4,7 @@ def dijkstra(start, station_info, line_info, user_info):
     distance = {}
     distance[start] = 0
     queue = []
+    path = {}
     heapq.heappush(queue, (distance[start], start))
 
     for user in user_info:
@@ -25,7 +26,6 @@ def dijkstra(start, station_info, line_info, user_info):
             if user_info[user] == current_name:
                 user_station_distance.append(current_dist)
                 print("!!!!!!!!!!!!!!!!!!")
-
         if distance[current_name] < max_user_station_distance or current_dist < max_user_station_distance:
             print("++")
         if distance[current_name] < current_dist:
@@ -37,5 +37,12 @@ def dijkstra(start, station_info, line_info, user_info):
                 distance[next_station] = current_dist + station_info[current_name]['time'][next_station]
                 heapq.heappush(queue, (distance[next_station], next_station))
 
+                if not (current_name in path):
+                    path[current_name]=[current_name]
+                    
+                path[next_station]=[next_station]
+                for x in path[current_name]: path[next_station].append(x)
+
     print(user_station_distance)
+    print(path['충무로'])
     return distance
