@@ -8,8 +8,6 @@ def quick_point(station_info, line_info, user_info):
         dijkstra_result.append(dijkstra.dijkstra(user_info[i], station_info, line_info, user_info))
     for station in station_info:
         user_distance = []
-        if station == '석촌고분' or station == '송파나루' or station == '한성백제' or station == '둔촌오륜' or station == '중앙보훈병원':
-            continue
         for j in range(len(user_info)):
             user_distance.append(dijkstra_result[j][station])
         each_user_distance[station] = user_distance
