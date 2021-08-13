@@ -4,7 +4,7 @@ import dijkstra
 def quick_point(station_info, line_info, user_info):
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
-    print(search_station)
+
     # user별 dijkstra 수행
     dijkstra_distance = []
     dijkstra_path = []
@@ -12,7 +12,6 @@ def quick_point(station_info, line_info, user_info):
         distance, path, search_station = dijkstra.dijkstra(user_info[i], station_info, user_info, search_station)
         dijkstra_distance.append(distance)
         dijkstra_path.append(path)
-        print(search_station)
 
     # 각 역별로 user까지 거리 list 생성
     # ex. '가능': [115, 19, 87, 107]

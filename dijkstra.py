@@ -46,6 +46,5 @@ def dijkstra(start, station_info, user_info, search_station):
                 path[next_station] = [next_station]
                 for x in path[current_name]: path[next_station].append(x)
 
-    print(user_distance)
     #print(path['충무로'])
     return distance, path, new_search_station
