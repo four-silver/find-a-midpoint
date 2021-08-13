@@ -15,3 +15,5 @@ if __name__ == '__main__':
     preprocessing.input_data(user_info)
 
     quick_point.quick_point(station_info, line_info, user_info)
+
+    print("sieun")
