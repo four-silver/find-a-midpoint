@@ -9,7 +9,7 @@ def quick_point(station_info, line_info, user_info):
     # user별 dijkstra 수행
     dijkstra_result = []
     for i in user_info:
-        dijkstra_result.append(dijkstra.dijkstra(user_info[i], station_info, user_info, search_station))
+        dijkstra_result.append(dijkstra.dijkstra(user_info[i], station_info, line_info, user_info))
 
     # 각 역별로 user까지 거리 list 생성
     # ex. '가능': [115, 19, 87, 107]
