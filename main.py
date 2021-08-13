@@ -18,3 +18,5 @@ if __name__ == '__main__':
     #middle_station.middle_station(station_info, line_info, user_info)
     quick_point.quick_point(station_info, line_info, user_info)
     print("daeun")
+
+    print("sieun")
