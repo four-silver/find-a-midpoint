@@ -14,9 +14,4 @@ if __name__ == '__main__':
     user_info = {}                    # user 정보 저장할 딕셔너리
     preprocessing.input_data(user_info)
 
-    dijkstra.dijkstra("금정", station_info, line_info, user_info)
-    #middle_station.middle_station(station_info, line_info, user_info)
     quick_point.quick_point(station_info, line_info, user_info)
-    print("daeun")
-
-    print("sieun")
