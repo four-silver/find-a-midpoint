@@ -17,3 +17,4 @@ if __name__ == '__main__':
     dijkstra.dijkstra("금정", station_info, line_info, user_info)
     #middle_station.middle_station(station_info, line_info, user_info)
     quick_point.quick_point(station_info, line_info, user_info)
+    print("daeun")
