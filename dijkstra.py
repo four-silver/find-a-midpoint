@@ -1,27 +1,41 @@
 import heapq
 import sys
 
-def dijkstra(start, station_info, line_info, user_info):
+def dijkstra(start, station_info, user_info, search_station):
     distance = {}
     distance[start] = 0
     queue = []
     path = {}
     heapq.heappush(queue, (distance[start], start))
 
-    for user in user_info:
-        print(user_info[user])
-    search_station = []
-    user_station_distance = []
-    max_user_station_distance = sys.float_info.max
+    user_distance = []
+    max_user_distance = sys.maxsize
+    new_search_station = []
 
     while queue:
         current_dist, current_name = heapq.heappop(queue)
 
+        ### 배제
+        # user의 max distance보다 거리가 짧으면, 탐색 수행
+        if current_dist < max_user_distance:
+            # 이미 search_station에 있는 값들만 추가(교집합)
+            if current_name in search_station:
+                new_search_station.append(current_name)
+        else:
+            continue
+        # 현재 역이 user의 역이라면, user의 distance 추가
+        if current_name in user_info.values():
+            user_distance.append(current_dist)
+            # user의 distance를 모두 구했다면, max 값 구하기
+            if len(user_distance) == 4:
+                max_user_distance = max(user_distance)
+
+        ### 다익스트라
         if distance[current_name] < current_dist:
             continue
         for next_station in station_info[current_name]['time'].keys():
             if not (next_station in distance):
-                distance[next_station] = 1000000
+                distance[next_station] = sys.maxsize
             if distance[next_station] > current_dist + station_info[current_name]['time'][next_station]:
                 distance[next_station] = current_dist + station_info[current_name]['time'][next_station]
                 heapq.heappush(queue, (distance[next_station], next_station))
@@ -32,6 +46,6 @@ def dijkstra(start, station_info, line_info, user_info):
                 path[next_station] = [next_station]
                 for x in path[current_name]: path[next_station].append(x)
 
-    print(user_station_distance)
-    print(path['충무로'])
-    return distance
+    print(user_distance)
+    #print(path['충무로'])
+    return distance, path, new_search_station
