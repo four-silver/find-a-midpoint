@@ -3,14 +3,9 @@ import dijkstra
 # 최솟값이 여러개일 때 모두 저장하여 배열로 반환
 def dozen_min(args):
     min_result = []     # 여러 역들을 저장할 배열
-    minimum = 100000
-    print_station = []  # 역 이름을 반환하기 위해 저장할 임시 배열
-    for i in args:
-        print_station.append(i) # 역 이름들 저장
-    for i in args.values(): # 가장 작은 value값 찾기
-        if i < minimum:
-            minimum = i
-    for i, j in zip(args.values(), print_station):  # 그 가장 작은 value값이랑 같은 역들 모두 저장
+    minimum = min(args.values())    # value 최소값 저장
+
+    for i, j in zip(args.values(), args.keys()):  # 그 가장 작은 value 값이랑 같은 역들 모두 저장
         if i == minimum:
             min_result.append(j)
     return min_result   # value가 가장 작은 역들 모두 저장한 배열 반환
@@ -45,12 +40,13 @@ def quick_point(station_info, line_info, user_info):
 
     # 소요시간이 가장 작은 역들 구하기
     quick_station = dozen_min(max_distance)
+    print(quick_station)
     all_sum = {}
 
     # quick_station에 저장된 값들 모두 더해서
     for i in quick_station:
         all_sum[i] = sum(each_user_distance[i])
-
+    print(all_sum)
     meet_station = min(all_sum, key=all_sum.get)  # 합이 가장 작은 역이 만날 역
     # 출력
     print("중간지점 역:",meet_station)
