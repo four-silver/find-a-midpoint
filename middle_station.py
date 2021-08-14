@@ -13,9 +13,6 @@ def middle_station(station_info, line_info, user_info):
     min_sum_time = sys.float_info.max
     min_sum_deviation = sys.float_info.max
     for station in line_info:       # 탐색할 역 전체
-        if station == '석촌고분' or station == '송파나루' or station == '한성백제' or station == '둔촌오륜' or station == '중앙보훈병원':
-            continue
-
         print("현재 역 :", station)
         user_distance = []  # user에서 해당 역까지 거리의 리스트
         for i in range(len(user_info)):
