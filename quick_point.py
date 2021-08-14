@@ -32,10 +32,13 @@ def quick_point(station_info, line_info, user_info):
     quick_station = min(max_distance, key=max_distance.get)
 
     # 출력
-    print("\n#######################")
-    print("가장 빨리 만나는 역:",quick_station)
+    print("중간지점 역:",quick_station)
 
-    each_station = 0
+    i = 0
     for name in user_info.keys():
-        print(name+" :", each_user_distance[quick_station][each_station])
-        each_station += 1
+        print(name+" :", each_user_distance[quick_station][i])
+        print("[",end='')
+        for j in range(0, len(dijkstra_path[i][quick_station])-1):
+            print(dijkstra_path[i][quick_station][len(dijkstra_path[i][quick_station])-j-1], end='->')
+        print(dijkstra_path[i][quick_station][0] + "]")
+        i += 1
