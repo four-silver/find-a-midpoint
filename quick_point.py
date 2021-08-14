@@ -5,17 +5,6 @@ def dozen_min(args):
     min_result = []     # 여러 역들을 저장할 배열
     minimum = min(args.values())    # value 최소값 저장
 
-    # 1안
-    for i in args.items():
-        if i[1] == minimum:
-            min_result.append(i[0])
-
-    # 2안
-    # for i, j in zip(args.values(), args.keys()):  # 그 가장 작은 value 값이랑 같은 역들 모두 저장
-    #     if i == minimum:
-    #         min_result.append(j)
-
-    # 3안
     for station in args:
         if args[station] == minimum:
             min_result.append(station)
@@ -60,12 +49,12 @@ def quick_point(station_info, line_info, user_info):
 
     meet_station = min(all_sum, key=all_sum.get)  # 합이 가장 작은 역이 만날 역
     # 출력
-    print("중간지점 역:",meet_station)
+    print("중간지점 역:", meet_station)
 
     i = 0
     for name in user_info.keys():
         print(name+" :", each_user_distance[meet_station][i])
-        print("[",end='')
+        print("[", end='')
         for j in range(0, len(dijkstra_path[i][meet_station])-1):
             print(dijkstra_path[i][meet_station][len(dijkstra_path[i][meet_station])-j-1], end='->')
         print(dijkstra_path[i][meet_station][0] + "]")
