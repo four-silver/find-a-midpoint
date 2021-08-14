@@ -14,6 +14,12 @@ def dozen_min(args):
     # for i, j in zip(args.values(), args.keys()):  # 그 가장 작은 value 값이랑 같은 역들 모두 저장
     #     if i == minimum:
     #         min_result.append(j)
+
+    # 3안
+    for station in args:
+        if args[station] == minimum:
+            min_result.append(station)
+
     return min_result   # value가 가장 작은 역들 모두 저장한 배열 반환
 
 # 동시에 출발했을 때 모든 구성원의 도착 지점이 가장 빠른 지점
