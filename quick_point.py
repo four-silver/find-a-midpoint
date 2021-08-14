@@ -15,12 +15,6 @@ def dozen_min(args):
             min_result.append(j)
     return min_result   # value가 가장 작은 역들 모두 저장한 배열 반환
 
-def min_sum(args):
-    sum = 0
-    for i in args:
-        sum += i
-    return sum
-
 # 동시에 출발했을 때 모든 구성원의 도착 지점이 가장 빠른 지점
 def quick_point(station_info, line_info, user_info):
     # 탐색할 역 이름 저장
@@ -51,12 +45,12 @@ def quick_point(station_info, line_info, user_info):
 
     # 소요시간이 가장 작은 역들 구하기
     quick_station = dozen_min(max_distance)
-    sum = {}
+    all_sum = {}
     # quick_station에 저장된 값들 모두 더해서
     for i in quick_station:
-        sum[i] = min_sum(each_user_distance[i])
+        all_sum[i] = sum(each_user_distance[i])
 
-    meet_station = min(sum, key=sum.get)  # 합이 가장 작은 역이 만날 역
+    meet_station = min(all_sum, key=all_sum.get)  # 합이 가장 작은 역이 만날 역
     # 출력
     print("\n#######################")
     print("가장 빨리 만나는 역:",meet_station)
