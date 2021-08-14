@@ -2,6 +2,12 @@ import heapq
 import sys
 
 def dijkstra(start, station_info, user_info, search_station):
+
+###예외처리 해본부분
+    station_info['쌍문']['time'] = {}
+    station_info['수유']['time'] = {}
+    station_info['창동']['time'] = {}
+###여기까지
     distance = {}
     distance[start] = 0
     queue = []
@@ -27,7 +33,7 @@ def dijkstra(start, station_info, user_info, search_station):
         if current_name in user_info.values():
             user_distance.append(current_dist)
             # user의 distance를 모두 구했다면, max 값 구하기
-            if len(user_distance) == 4:
+            if len(user_distance) == len(user_info):
                 max_user_distance = max(user_distance)
 
         ### 다익스트라
@@ -45,6 +51,10 @@ def dijkstra(start, station_info, user_info, search_station):
 
                 path[next_station] = [next_station]
                 for x in path[current_name]: path[next_station].append(x)
+
+    if not (len(user_distance) == len(user_info)):
+        print('역이 연결되어있지 않습니다!')
+        exit(0)
 
     #print(path['충무로'])
     return distance, path, new_search_station
