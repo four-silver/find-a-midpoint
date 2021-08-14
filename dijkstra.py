@@ -12,6 +12,7 @@ def dijkstra(start, station_info, user_info, search_station):
     distance[start] = 0
     queue = []
     path = {}
+    visited = []
     heapq.heappush(queue, (distance[start], start))
 
     user_distance = []
@@ -20,7 +21,9 @@ def dijkstra(start, station_info, user_info, search_station):
 
     while queue:
         current_dist, current_name = heapq.heappop(queue)
-
+        if current_name in visited:
+            continue
+        visited.append(current_name)
         ### 배제
         # user의 max distance보다 거리가 짧으면, 탐색 수행
         if current_dist < max_user_distance:
