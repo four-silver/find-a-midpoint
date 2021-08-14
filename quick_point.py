@@ -46,6 +46,7 @@ def quick_point(station_info, line_info, user_info):
     # 소요시간이 가장 작은 역들 구하기
     quick_station = dozen_min(max_distance)
     all_sum = {}
+
     # quick_station에 저장된 값들 모두 더해서
     for i in quick_station:
         all_sum[i] = sum(each_user_distance[i])
