@@ -2,11 +2,6 @@ import heapq
 import sys
 
 def dijkstra(start, station_info, user_info, search_station):
-
-###예외처리 해본부분
-    station_info['쌍문']['time'] = {}
-    station_info['수유']['time'] = {}
-    station_info['창동']['time'] = {}
 ###여기까지
     distance = {}
     distance[start] = 0
