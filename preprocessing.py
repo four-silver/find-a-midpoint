@@ -25,9 +25,8 @@ def input_data(user_info):
     f = open("input_file.txt", encoding='utf-8')
 
     while True:
-        line = f.readline()     # 파일 내용 한 줄씩 읽어옴
+        line = f.readline().strip()     # 파일 내용 한 줄씩 읽어오면서 '\n' 포함되는 것 제거
         if not line: break
-        line = line.replace('\n', '')           # '\n' 포함되는 것 제거
         user_name = line.split(' ')[0]          # 띄어쓰기로 구분하여 앞에는 유저 이름
         boarding_station = line.split(' ')[1]   # 뒤에는 탑승 역
 
