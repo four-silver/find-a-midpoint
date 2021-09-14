@@ -12,7 +12,7 @@ def dozen_min(args):
     return min_result   # value가 가장 작은 역들 모두 저장한 배열 반환
 
 # 동시에 출발했을 때 모든 구성원의 도착 지점이 가장 빠른 지점
-def quick_point(station_info, line_info, user_info):
+def quick_point(station_info, user_info):
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
 
