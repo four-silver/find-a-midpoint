@@ -56,6 +56,5 @@ def SPFA(start, station_info, user_info, search_station):
     if not (len(user_distance) == len(user_info)):
         print('역이 연결되어있지 않습니다!')
         exit(0)
-    print(new_search_station)
-    print("+++++++++++++++++++++++++++++++++++++++")
+
     return DIST, new_search_station

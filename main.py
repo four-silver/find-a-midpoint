@@ -1,3 +1,4 @@
+import SPFA
 import preprocessing
 import quick_point
 
@@ -10,4 +11,7 @@ if __name__ == '__main__':
     user_info = {}                    # user 정보 저장할 딕셔너리
     preprocessing.input_data(user_info)
 
-    quick_point.quick_point(station_info, user_info)
+    print("dijkstra")
+    quick_point.dijkstra_quickpoint(station_info, user_info)
+    print("SPFA")
+    quick_point.SPFA_quickpoint(station_info, user_info)
