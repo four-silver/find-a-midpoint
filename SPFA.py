@@ -14,6 +14,8 @@ def SPFA(start, station_info, user_info, search_station):
     max_user_distance = sys.maxsize
     new_search_station = []
 
+    compare = 0
+
     while not q.empty():
         current_name = q.get()
         inqueue.remove(current_name)
@@ -41,7 +43,9 @@ def SPFA(start, station_info, user_info, search_station):
         ## SPFA
         if max_user_distance < DIST[current_name]:
             continue
+        compare += 1
         for next_station in station_info[current_name]['time'].keys():
+            compare += 1
             cost = DIST[current_name] + station_info[current_name]['time'][next_station]
 
             if next_station not in DIST.keys():     # 초기화

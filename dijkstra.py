@@ -14,6 +14,8 @@ def dijkstra(start, station_info, user_info, search_station):
     max_user_distance = sys.maxsize
     new_search_station = []
 
+    compare = 0
+
     while queue:
         current_dist, current_name = heapq.heappop(queue)
         if current_name in visited:
@@ -38,6 +40,7 @@ def dijkstra(start, station_info, user_info, search_station):
         if distance[current_name] < current_dist:
             continue
         for next_station in station_info[current_name]['time'].keys():
+            compare += 1
             if not (next_station in distance):
                 distance[next_station] = sys.maxsize
             if distance[next_station] > current_dist + station_info[current_name]['time'][next_station]:
