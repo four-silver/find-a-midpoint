@@ -25,8 +25,8 @@ def dijkstra(start, station_info, user_info, search_station, compare):
             # 이미 search_station에 있는 값들만 추가(교집합)
             if current_name in search_station:
                 new_search_station.append(current_name)
-        else:
-            continue
+        #else:
+        #    continue
         # 현재 역이 user의 역이라면, user의 distance 추가
         if current_name in user_info.values():
             user_distance.append(current_dist)
@@ -35,8 +35,8 @@ def dijkstra(start, station_info, user_info, search_station, compare):
                 max_user_distance = max(user_distance)
 
         ### 다익스트라
-        if distance[current_name] < current_dist:
-            continue
+        #if distance[current_name] < current_dist:
+        #    continue
         compare += 1
         for next_station in station_info[current_name]['time'].keys():
             compare += 1
