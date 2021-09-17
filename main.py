@@ -16,6 +16,5 @@ if __name__ == '__main__':
     quick_point.dijkstra_quickpoint(station_info, user_info)
     print("\nSPFA")
     quick_point.SPFA_quickpoint(station_info, user_info)
-
-    dfs.start("충무로", "서울역",station_info)
-    print(dfs.path)
+    print("DFS")
+    quick_point.DFS_quickpoint(station_info, user_info)

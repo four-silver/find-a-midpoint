@@ -2,7 +2,6 @@ import sys
 
 dfs = []
 dist = {}
-path = " "
 
 def DFS(current_station, sum, s, cost, station_info):
     if not current_station in dist:
@@ -23,6 +22,10 @@ def DFS(current_station, sum, s, cost, station_info):
         dfs.remove(next_station)
 
 def start(start, station_info):
+    global dfs
+    global dist
+    dfs = []
+    dist = {}
     cost = sys.maxsize
     dist[start] = cost
     dfs.append(start)

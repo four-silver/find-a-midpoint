@@ -1,5 +1,8 @@
+import sys
+
 import dijkstra
 import SPFA
+import dfs
 import time
 
 # 최솟값이 여러개일 때 모두 저장하여 배열로 반환
@@ -72,12 +75,13 @@ def dijkstra_quickpoint(station_info, user_info):
     find_middle_point(search_station, user_info, distance_result)
     end = time.time()
     print('dijkstra', end-start, 'sec')
+
 def SPFA_quickpoint(station_info, user_info):
     start = time.time()
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
 
-    # user별 dijkstra 수행
+    # user별 SPFA 수행
     distance_result = []
     for i in user_info:
         distance, search_station = SPFA.SPFA(user_info[i], station_info, user_info, search_station)
@@ -87,3 +91,27 @@ def SPFA_quickpoint(station_info, user_info):
     find_middle_point(search_station, user_info, distance_result)
     end = time.time()
     print('SPFA', end-start, 'sec')
+
+def DFS_quickpoint(station_info, user_info):
+    search_station = list(station_info.keys())
+
+    # user별 DFS 수행
+    distance_result = []
+    for i in user_info:
+        distance = dfs.start(user_info[i], station_info)
+        distance_result.append(distance)
+
+        max = 0
+        for j in user_info:
+            if distance[user_info[j]] > max:
+                max = distance[user_info[j]]
+
+        new_search_station = []
+        for station_name in distance:
+            if distance[station_name] <= max:
+                if station_name in search_station:
+                    new_search_station.append(station_name)
+
+        search_station = new_search_station
+
+    find_middle_point(search_station, user_info, distance_result)
