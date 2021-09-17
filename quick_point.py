@@ -1,5 +1,6 @@
 import dijkstra
 import SPFA
+import time
 
 # 최솟값이 여러개일 때 모두 저장하여 배열로 반환
 def dozen_min(args):
@@ -61,6 +62,7 @@ def find_middle_point(search_station, user_info, distance_result):
             i += 1
 
 def dijkstra_quickpoint(station_info, user_info):
+    start = time.time()
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
 
@@ -74,8 +76,10 @@ def dijkstra_quickpoint(station_info, user_info):
     print(search_station)
 
     find_middle_point(search_station, user_info, distance_result)
-
+    end = time.time()
+    print('dijkstra', end-start, 'sec')
 def SPFA_quickpoint(station_info, user_info):
+    start = time.time()
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
 
@@ -87,3 +91,5 @@ def SPFA_quickpoint(station_info, user_info):
     print(search_station)
 
     find_middle_point(search_station, user_info, distance_result)
+    end = time.time()
+    print('SPFA', end-start, 'sec')

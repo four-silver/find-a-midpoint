@@ -57,8 +57,9 @@ def SPFA(start, station_info, user_info, search_station):
                     q.put(next_station)
                     inqueue.append(next_station)
 
-    if not (len(user_distance) == len(user_info)):
-        print('역이 연결되어있지 않습니다!')
-        exit(0)
+    for i in user_info:
+        if user_info[i] not in DIST:
+            print('역이 연결되어있지 않습니다!')
+            exit(0)
 
     return DIST, new_search_station
