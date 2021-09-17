@@ -59,6 +59,7 @@ def find_middle_point(search_station, user_info, distance_result):
             i += 1
 
 def dijkstra_quickpoint(station_info, user_info):
+    compare = 0
     start = time.time()
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
@@ -67,7 +68,7 @@ def dijkstra_quickpoint(station_info, user_info):
     distance_result = []
     #path_result = []
     for i in user_info:
-        distance, path, search_station = dijkstra.dijkstra(user_info[i], station_info, user_info, search_station)
+        distance, path, search_station, compare = dijkstra.dijkstra(user_info[i], station_info, user_info, search_station, compare)
         distance_result.append(distance)
         #path_result.append(path)
     # print(search_station)
@@ -75,8 +76,10 @@ def dijkstra_quickpoint(station_info, user_info):
     find_middle_point(search_station, user_info, distance_result)
     end = time.time()
     print('dijkstra', end-start, 'sec')
+    print('dijkstra compare', compare)
 
 def SPFA_quickpoint(station_info, user_info):
+    compare = 0
     start = time.time()
     # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
@@ -84,22 +87,27 @@ def SPFA_quickpoint(station_info, user_info):
     # user별 SPFA 수행
     distance_result = []
     for i in user_info:
-        distance, search_station = SPFA.SPFA(user_info[i], station_info, user_info, search_station)
+        distance, search_station, compare = SPFA.SPFA(user_info[i], station_info, user_info, search_station, compare)
         distance_result.append(distance)
     # print(search_station)
 
     find_middle_point(search_station, user_info, distance_result)
     end = time.time()
     print('SPFA', end-start, 'sec')
+    print('SPFA compare', compare)
 
 def DFS_quickpoint(station_info, user_info):
+    total_compare = 0
+    start = time.time()
+    # 탐색할 역 이름 저장
     search_station = list(station_info.keys())
 
     # user별 DFS 수행
     distance_result = []
     for i in user_info:
-        distance = dfs.start(user_info[i], station_info)
+        distance, compare = dfs.start(user_info[i], station_info)
         distance_result.append(distance)
+        total_compare += compare
 
         max = 0
         for j in user_info:
@@ -115,3 +123,6 @@ def DFS_quickpoint(station_info, user_info):
         search_station = new_search_station
 
     find_middle_point(search_station, user_info, distance_result)
+    end = time.time()
+    print('DFS', end-start, 'sec')
+    print('DFS compare', total_compare)

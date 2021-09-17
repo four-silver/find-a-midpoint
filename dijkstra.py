@@ -1,7 +1,7 @@
 import heapq
 import sys
 
-def dijkstra(start, station_info, user_info, search_station):
+def dijkstra(start, station_info, user_info, search_station, compare):
 ###여기까지
     distance = {}
     distance[start] = 0
@@ -13,8 +13,6 @@ def dijkstra(start, station_info, user_info, search_station):
     user_distance = []
     max_user_distance = sys.maxsize
     new_search_station = []
-
-    compare = 0
 
     while queue:
         current_dist, current_name = heapq.heappop(queue)
@@ -39,6 +37,7 @@ def dijkstra(start, station_info, user_info, search_station):
         ### 다익스트라
         if distance[current_name] < current_dist:
             continue
+        compare += 1
         for next_station in station_info[current_name]['time'].keys():
             compare += 1
             if not (next_station in distance):
@@ -60,4 +59,4 @@ def dijkstra(start, station_info, user_info, search_station):
 
 
     #print(path['충무로'])
-    return distance, path, new_search_station
+    return distance, path, new_search_station, compare

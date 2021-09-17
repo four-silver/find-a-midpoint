@@ -1,7 +1,7 @@
 import queue
 import sys
 
-def SPFA(start, station_info, user_info, search_station):
+def SPFA(start, station_info, user_info, search_station, compare):
     DIST = {}       # 각 역마다의 거리
     inqueue = [start]
     q = queue.Queue()
@@ -12,8 +12,6 @@ def SPFA(start, station_info, user_info, search_station):
     user_distance = []
     max_user_distance = sys.maxsize
     new_search_station = []
-
-    compare = 0
 
     while not q.empty():
         current_name = q.get()
@@ -61,4 +59,4 @@ def SPFA(start, station_info, user_info, search_station):
             print('역이 연결되어있지 않습니다!')
             exit(0)
 
-    return DIST, new_search_station
+    return DIST, new_search_station, compare
