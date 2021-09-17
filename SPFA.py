@@ -1,7 +1,6 @@
 import queue
 import sys
 
-
 def SPFA(start, station_info, user_info, search_station):
     DIST = {}       # 각 역마다의 거리
     inqueue = [start]

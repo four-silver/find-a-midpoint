@@ -13,5 +13,5 @@ if __name__ == '__main__':
 
     print("dijkstra")
     quick_point.dijkstra_quickpoint(station_info, user_info)
-    print("SPFA")
+    print("\nSPFA")
     quick_point.SPFA_quickpoint(station_info, user_info)

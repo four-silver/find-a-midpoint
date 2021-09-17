@@ -33,12 +33,7 @@ def find_middle_point(search_station, user_info, distance_result):
     # 소요시간이 가장 작은 역들 구하기
     quick_station = dozen_min(max_distance)
     all_sum = {}
-    for station in quick_station:
-        print("중간지점 역 : ", station)
-        i = 0
-        for name in user_info.keys():
-            print(name + "(" + user_info[name] + ") :", each_user_distance[station][i])
-            i += 1
+
     # quick_station에 저장된 값들 모두 더해서
     for i in quick_station:
         all_sum[i] = sum(each_user_distance[i])
@@ -55,7 +50,6 @@ def find_middle_point(search_station, user_info, distance_result):
         i = 0
         for name in user_info.keys():
             print(name + "(" + user_info[name] + ") :", each_user_distance[meet_station][i])
-            print("[", end='')
             #for j in range(0, len(path_result[i][meet_station]) - 1):
             #    print(path_result[i][meet_station][len(path_result[i][meet_station]) - j - 1], end='->')
             #print(path_result[i][meet_station][0] + "]")
@@ -73,7 +67,7 @@ def dijkstra_quickpoint(station_info, user_info):
         distance, path, search_station = dijkstra.dijkstra(user_info[i], station_info, user_info, search_station)
         distance_result.append(distance)
         #path_result.append(path)
-    print(search_station)
+    # print(search_station)
 
     find_middle_point(search_station, user_info, distance_result)
     end = time.time()
@@ -88,7 +82,7 @@ def SPFA_quickpoint(station_info, user_info):
     for i in user_info:
         distance, search_station = SPFA.SPFA(user_info[i], station_info, user_info, search_station)
         distance_result.append(distance)
-    print(search_station)
+    # print(search_station)
 
     find_middle_point(search_station, user_info, distance_result)
     end = time.time()
